@@ -55,7 +55,7 @@ jobs:
             exit 1
           fi
 
-  report:
+report:
     name: Report Pipeline Summary
     runs-on: ubuntu-latest
     needs: build-docker
