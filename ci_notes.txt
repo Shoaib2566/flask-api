@@ -1,5 +1,5 @@
-EOF'
-If the test job fails, the build-docker job will not run because build-docker has needs: test in the GitHub Actions workflow.
+If the test job fails, the build-docker job will not run because the workflow uses "needs: test".
 
-This is important because Docker images should only be built after the code has passed automated tests. It prevents broken code from being packaged into a Docker image and saves CI resources by stopping the pipeline early when tests fail.
-EOF
+This means the build-docker job depends on the test job. If the test job fails, GitHub Actions stops the pipeline and does not continue to the Docker build step.
+
+This is important because it prevents broken or untested code from being packaged into a Docker image. It ensures that only code that passes all tests is built and deployed, which improves reliability and saves time and resources.
